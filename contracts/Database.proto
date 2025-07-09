@@ -7,6 +7,7 @@ import "Req.proto";
 option go_package="github.com/DEEBBLUE/MailProtos/api/Database";
 
 service Database{
+  //User
   rpc CreateUser(req.CreateUserReq)
     returns (req.DefaultRes);
   rpc RepeateUser(req.RepeateUserReq)
@@ -17,4 +18,10 @@ service Database{
     returns (req.DefaultRes);
   rpc UpdateUserName(req.UpdateUserNameReq)
     returns (req.DefaultRes);
+
+  //Messages
+  rpc CreateMessage(req.CreateMessageReq)
+    returns (req.DefaultRes);
+  rpc RepeateMessage(req.RepeateMessageReq)
+    returns (req.RepeateMessageRes);
 }
