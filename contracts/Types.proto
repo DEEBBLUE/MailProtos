@@ -9,3 +9,11 @@ message User{
   string password = 2;
   string name = 3;
 }
+
+message Message{
+  int32 id = 1;
+  string name = 2;
+  string message_value = 3;
+  User publisher = 4;
+  repeated string emails_consumers = 5;
+}
