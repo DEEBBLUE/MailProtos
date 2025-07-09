@@ -66,6 +66,7 @@ func (x *DefaultRes) GetStatus() string {
 	return ""
 }
 
+// User
 type CreateUserReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *Types.User            `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
@@ -346,6 +347,139 @@ func (x *UpdateUserNameReq) GetNewUserName() string {
 	return ""
 }
 
+// Req
+type CreateMessageReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Mess          *Types.Message         `protobuf:"bytes,1,opt,name=mess,proto3" json:"mess,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateMessageReq) Reset() {
+	*x = CreateMessageReq{}
+	mi := &file_Req_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateMessageReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateMessageReq) ProtoMessage() {}
+
+func (x *CreateMessageReq) ProtoReflect() protoreflect.Message {
+	mi := &file_Req_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateMessageReq.ProtoReflect.Descriptor instead.
+func (*CreateMessageReq) Descriptor() ([]byte, []int) {
+	return file_Req_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CreateMessageReq) GetMess() *Types.Message {
+	if x != nil {
+		return x.Mess
+	}
+	return nil
+}
+
+type RepeateMessageReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RepeateMessageReq) Reset() {
+	*x = RepeateMessageReq{}
+	mi := &file_Req_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RepeateMessageReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RepeateMessageReq) ProtoMessage() {}
+
+func (x *RepeateMessageReq) ProtoReflect() protoreflect.Message {
+	mi := &file_Req_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RepeateMessageReq.ProtoReflect.Descriptor instead.
+func (*RepeateMessageReq) Descriptor() ([]byte, []int) {
+	return file_Req_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *RepeateMessageReq) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type RepeateMessageRes struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Mess          *Types.Message         `protobuf:"bytes,1,opt,name=mess,proto3" json:"mess,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RepeateMessageRes) Reset() {
+	*x = RepeateMessageRes{}
+	mi := &file_Req_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RepeateMessageRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RepeateMessageRes) ProtoMessage() {}
+
+func (x *RepeateMessageRes) ProtoReflect() protoreflect.Message {
+	mi := &file_Req_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RepeateMessageRes.ProtoReflect.Descriptor instead.
+func (*RepeateMessageRes) Descriptor() ([]byte, []int) {
+	return file_Req_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *RepeateMessageRes) GetMess() *Types.Message {
+	if x != nil {
+		return x.Mess
+	}
+	return nil
+}
+
 var File_Req_proto protoreflect.FileDescriptor
 
 const file_Req_proto_rawDesc = "" +
@@ -367,7 +501,13 @@ const file_Req_proto_rawDesc = "" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"M\n" +
 	"\x11UpdateUserNameReq\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\"\n" +
-	"\rnew_user_name\x18\x02 \x01(\tR\vnewUserNameB(Z&github.com/DEEBBLUE/MailProtos/api/Reqb\x06proto3"
+	"\rnew_user_name\x18\x02 \x01(\tR\vnewUserName\"6\n" +
+	"\x10CreateMessageReq\x12\"\n" +
+	"\x04mess\x18\x01 \x01(\v2\x0e.types.MessageR\x04mess\"#\n" +
+	"\x11RepeateMessageReq\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"7\n" +
+	"\x11RepeateMessageRes\x12\"\n" +
+	"\x04mess\x18\x01 \x01(\v2\x0e.types.MessageR\x04messB(Z&github.com/DEEBBLUE/MailProtos/api/Reqb\x06proto3"
 
 var (
 	file_Req_proto_rawDescOnce sync.Once
@@ -381,7 +521,7 @@ func file_Req_proto_rawDescGZIP() []byte {
 	return file_Req_proto_rawDescData
 }
 
-var file_Req_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_Req_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_Req_proto_goTypes = []any{
 	(*DefaultRes)(nil),            // 0: req.DefaultRes
 	(*CreateUserReq)(nil),         // 1: req.CreateUserReq
@@ -390,16 +530,22 @@ var file_Req_proto_goTypes = []any{
 	(*DeleteUserReq)(nil),         // 4: req.DeleteUserReq
 	(*UpdateUserPasswordReq)(nil), // 5: req.UpdateUserPasswordReq
 	(*UpdateUserNameReq)(nil),     // 6: req.UpdateUserNameReq
-	(*Types.User)(nil),            // 7: types.User
+	(*CreateMessageReq)(nil),      // 7: req.CreateMessageReq
+	(*RepeateMessageReq)(nil),     // 8: req.RepeateMessageReq
+	(*RepeateMessageRes)(nil),     // 9: req.RepeateMessageRes
+	(*Types.User)(nil),            // 10: types.User
+	(*Types.Message)(nil),         // 11: types.Message
 }
 var file_Req_proto_depIdxs = []int32{
-	7, // 0: req.CreateUserReq.user:type_name -> types.User
-	7, // 1: req.RepeateUserRes.user:type_name -> types.User
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	10, // 0: req.CreateUserReq.user:type_name -> types.User
+	10, // 1: req.RepeateUserRes.user:type_name -> types.User
+	11, // 2: req.CreateMessageReq.mess:type_name -> types.Message
+	11, // 3: req.RepeateMessageRes.mess:type_name -> types.Message
+	4,  // [4:4] is the sub-list for method output_type
+	4,  // [4:4] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_Req_proto_init() }
@@ -413,7 +559,7 @@ func file_Req_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_Req_proto_rawDesc), len(file_Req_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

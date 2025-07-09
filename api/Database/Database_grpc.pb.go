@@ -25,17 +25,23 @@ const (
 	Database_DeleteUser_FullMethodName         = "/database.Database/DeleteUser"
 	Database_UpdateUserPassword_FullMethodName = "/database.Database/UpdateUserPassword"
 	Database_UpdateUserName_FullMethodName     = "/database.Database/UpdateUserName"
+	Database_CreateMessage_FullMethodName      = "/database.Database/CreateMessage"
+	Database_RepeateMessage_FullMethodName     = "/database.Database/RepeateMessage"
 )
 
 // DatabaseClient is the client API for Database service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DatabaseClient interface {
+	// User
 	CreateUser(ctx context.Context, in *Req.CreateUserReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
 	RepeateUser(ctx context.Context, in *Req.RepeateUserReq, opts ...grpc.CallOption) (*Req.RepeateUserRes, error)
 	DeleteUser(ctx context.Context, in *Req.DeleteUserReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
 	UpdateUserPassword(ctx context.Context, in *Req.UpdateUserPasswordReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
 	UpdateUserName(ctx context.Context, in *Req.UpdateUserNameReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
+	// Messages
+	CreateMessage(ctx context.Context, in *Req.CreateMessageReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
+	RepeateMessage(ctx context.Context, in *Req.RepeateMessageReq, opts ...grpc.CallOption) (*Req.RepeateMessageRes, error)
 }
 
 type databaseClient struct {
@@ -96,15 +102,39 @@ func (c *databaseClient) UpdateUserName(ctx context.Context, in *Req.UpdateUserN
 	return out, nil
 }
 
+func (c *databaseClient) CreateMessage(ctx context.Context, in *Req.CreateMessageReq, opts ...grpc.CallOption) (*Req.DefaultRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Req.DefaultRes)
+	err := c.cc.Invoke(ctx, Database_CreateMessage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *databaseClient) RepeateMessage(ctx context.Context, in *Req.RepeateMessageReq, opts ...grpc.CallOption) (*Req.RepeateMessageRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Req.RepeateMessageRes)
+	err := c.cc.Invoke(ctx, Database_RepeateMessage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DatabaseServer is the server API for Database service.
 // All implementations must embed UnimplementedDatabaseServer
 // for forward compatibility.
 type DatabaseServer interface {
+	// User
 	CreateUser(context.Context, *Req.CreateUserReq) (*Req.DefaultRes, error)
 	RepeateUser(context.Context, *Req.RepeateUserReq) (*Req.RepeateUserRes, error)
 	DeleteUser(context.Context, *Req.DeleteUserReq) (*Req.DefaultRes, error)
 	UpdateUserPassword(context.Context, *Req.UpdateUserPasswordReq) (*Req.DefaultRes, error)
 	UpdateUserName(context.Context, *Req.UpdateUserNameReq) (*Req.DefaultRes, error)
+	// Messages
+	CreateMessage(context.Context, *Req.CreateMessageReq) (*Req.DefaultRes, error)
+	RepeateMessage(context.Context, *Req.RepeateMessageReq) (*Req.RepeateMessageRes, error)
 	mustEmbedUnimplementedDatabaseServer()
 }
 
@@ -129,6 +159,12 @@ func (UnimplementedDatabaseServer) UpdateUserPassword(context.Context, *Req.Upda
 }
 func (UnimplementedDatabaseServer) UpdateUserName(context.Context, *Req.UpdateUserNameReq) (*Req.DefaultRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserName not implemented")
+}
+func (UnimplementedDatabaseServer) CreateMessage(context.Context, *Req.CreateMessageReq) (*Req.DefaultRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateMessage not implemented")
+}
+func (UnimplementedDatabaseServer) RepeateMessage(context.Context, *Req.RepeateMessageReq) (*Req.RepeateMessageRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RepeateMessage not implemented")
 }
 func (UnimplementedDatabaseServer) mustEmbedUnimplementedDatabaseServer() {}
 func (UnimplementedDatabaseServer) testEmbeddedByValue()                  {}
@@ -241,6 +277,42 @@ func _Database_UpdateUserName_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Database_CreateMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Req.CreateMessageReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseServer).CreateMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Database_CreateMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseServer).CreateMessage(ctx, req.(*Req.CreateMessageReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Database_RepeateMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Req.RepeateMessageReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseServer).RepeateMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Database_RepeateMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseServer).RepeateMessage(ctx, req.(*Req.RepeateMessageReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Database_ServiceDesc is the grpc.ServiceDesc for Database service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -267,6 +339,14 @@ var Database_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserName",
 			Handler:    _Database_UpdateUserName_Handler,
+		},
+		{
+			MethodName: "CreateMessage",
+			Handler:    _Database_CreateMessage_Handler,
+		},
+		{
+			MethodName: "RepeateMessage",
+			Handler:    _Database_RepeateMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

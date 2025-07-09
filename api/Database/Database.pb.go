@@ -25,7 +25,7 @@ var File_Database_proto protoreflect.FileDescriptor
 
 const file_Database_proto_rawDesc = "" +
 	"\n" +
-	"\x0eDatabase.proto\x12\bdatabase\x1a\tReq.proto2\xa7\x02\n" +
+	"\x0eDatabase.proto\x12\bdatabase\x1a\tReq.proto2\xa2\x03\n" +
 	"\bDatabase\x121\n" +
 	"\n" +
 	"CreateUser\x12\x12.req.CreateUserReq\x1a\x0f.req.DefaultRes\x127\n" +
@@ -33,7 +33,9 @@ const file_Database_proto_rawDesc = "" +
 	"\n" +
 	"DeleteUser\x12\x12.req.DeleteUserReq\x1a\x0f.req.DefaultRes\x12A\n" +
 	"\x12UpdateUserPassword\x12\x1a.req.UpdateUserPasswordReq\x1a\x0f.req.DefaultRes\x129\n" +
-	"\x0eUpdateUserName\x12\x16.req.UpdateUserNameReq\x1a\x0f.req.DefaultResB-Z+github.com/DEEBBLUE/MailProtos/api/Databaseb\x06proto3"
+	"\x0eUpdateUserName\x12\x16.req.UpdateUserNameReq\x1a\x0f.req.DefaultRes\x127\n" +
+	"\rCreateMessage\x12\x15.req.CreateMessageReq\x1a\x0f.req.DefaultRes\x12@\n" +
+	"\x0eRepeateMessage\x12\x16.req.RepeateMessageReq\x1a\x16.req.RepeateMessageResB-Z+github.com/DEEBBLUE/MailProtos/api/Databaseb\x06proto3"
 
 var file_Database_proto_goTypes = []any{
 	(*Req.CreateUserReq)(nil),         // 0: req.CreateUserReq
@@ -41,8 +43,11 @@ var file_Database_proto_goTypes = []any{
 	(*Req.DeleteUserReq)(nil),         // 2: req.DeleteUserReq
 	(*Req.UpdateUserPasswordReq)(nil), // 3: req.UpdateUserPasswordReq
 	(*Req.UpdateUserNameReq)(nil),     // 4: req.UpdateUserNameReq
-	(*Req.DefaultRes)(nil),            // 5: req.DefaultRes
-	(*Req.RepeateUserRes)(nil),        // 6: req.RepeateUserRes
+	(*Req.CreateMessageReq)(nil),      // 5: req.CreateMessageReq
+	(*Req.RepeateMessageReq)(nil),     // 6: req.RepeateMessageReq
+	(*Req.DefaultRes)(nil),            // 7: req.DefaultRes
+	(*Req.RepeateUserRes)(nil),        // 8: req.RepeateUserRes
+	(*Req.RepeateMessageRes)(nil),     // 9: req.RepeateMessageRes
 }
 var file_Database_proto_depIdxs = []int32{
 	0, // 0: database.Database.CreateUser:input_type -> req.CreateUserReq
@@ -50,13 +55,17 @@ var file_Database_proto_depIdxs = []int32{
 	2, // 2: database.Database.DeleteUser:input_type -> req.DeleteUserReq
 	3, // 3: database.Database.UpdateUserPassword:input_type -> req.UpdateUserPasswordReq
 	4, // 4: database.Database.UpdateUserName:input_type -> req.UpdateUserNameReq
-	5, // 5: database.Database.CreateUser:output_type -> req.DefaultRes
-	6, // 6: database.Database.RepeateUser:output_type -> req.RepeateUserRes
-	5, // 7: database.Database.DeleteUser:output_type -> req.DefaultRes
-	5, // 8: database.Database.UpdateUserPassword:output_type -> req.DefaultRes
-	5, // 9: database.Database.UpdateUserName:output_type -> req.DefaultRes
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
+	5, // 5: database.Database.CreateMessage:input_type -> req.CreateMessageReq
+	6, // 6: database.Database.RepeateMessage:input_type -> req.RepeateMessageReq
+	7, // 7: database.Database.CreateUser:output_type -> req.DefaultRes
+	8, // 8: database.Database.RepeateUser:output_type -> req.RepeateUserRes
+	7, // 9: database.Database.DeleteUser:output_type -> req.DefaultRes
+	7, // 10: database.Database.UpdateUserPassword:output_type -> req.DefaultRes
+	7, // 11: database.Database.UpdateUserName:output_type -> req.DefaultRes
+	7, // 12: database.Database.CreateMessage:output_type -> req.DefaultRes
+	9, // 13: database.Database.RepeateMessage:output_type -> req.RepeateMessageRes
+	7, // [7:14] is the sub-list for method output_type
+	0, // [0:7] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
