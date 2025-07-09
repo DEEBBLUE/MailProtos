@@ -87,7 +87,8 @@ type Message struct {
 	Name            string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	MessageValue    string                 `protobuf:"bytes,3,opt,name=message_value,json=messageValue,proto3" json:"message_value,omitempty"`
 	PublisherEmail  string                 `protobuf:"bytes,4,opt,name=publisher_email,json=publisherEmail,proto3" json:"publisher_email,omitempty"`
-	EmailsConsumers []string               `protobuf:"bytes,5,rep,name=emails_consumers,json=emailsConsumers,proto3" json:"emails_consumers,omitempty"`
+	TimeDispatch    string                 `protobuf:"bytes,5,opt,name=time_dispatch,json=timeDispatch,proto3" json:"time_dispatch,omitempty"`
+	EmailsConsumers []string               `protobuf:"bytes,6,rep,name=emails_consumers,json=emailsConsumers,proto3" json:"emails_consumers,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -150,6 +151,13 @@ func (x *Message) GetPublisherEmail() string {
 	return ""
 }
 
+func (x *Message) GetTimeDispatch() string {
+	if x != nil {
+		return x.TimeDispatch
+	}
+	return ""
+}
+
 func (x *Message) GetEmailsConsumers() []string {
 	if x != nil {
 		return x.EmailsConsumers
@@ -165,13 +173,14 @@ const file_Types_proto_rawDesc = "" +
 	"\x04User\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"\xa6\x01\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\xcb\x01\n" +
 	"\aMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
 	"\rmessage_value\x18\x03 \x01(\tR\fmessageValue\x12'\n" +
-	"\x0fpublisher_email\x18\x04 \x01(\tR\x0epublisherEmail\x12)\n" +
-	"\x10emails_consumers\x18\x05 \x03(\tR\x0femailsConsumersB*Z(github.com/DEEBBLUE/MailProtos/api/Typesb\x06proto3"
+	"\x0fpublisher_email\x18\x04 \x01(\tR\x0epublisherEmail\x12#\n" +
+	"\rtime_dispatch\x18\x05 \x01(\tR\ftimeDispatch\x12)\n" +
+	"\x10emails_consumers\x18\x06 \x03(\tR\x0femailsConsumersB*Z(github.com/DEEBBLUE/MailProtos/api/Typesb\x06proto3"
 
 var (
 	file_Types_proto_rawDescOnce sync.Once
