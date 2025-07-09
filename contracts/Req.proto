@@ -10,21 +10,19 @@ message DefaultRes{
   string status = 1;
 }
 
+//User
 message CreateUserReq{
   types.User user = 1;
 }
-
 message RepeateUserReq{
   string email = 1;
 }
 message RepeateUserRes{
   types.User user = 1;
 }
-
 message DeleteUserReq{
   string email = 1;
 }
-
 message UpdateUserPasswordReq{
   string email = 1;
   string new_password = 2;
@@ -33,3 +31,14 @@ message UpdateUserNameReq{
   string email = 1;
   string new_user_name = 2;
 }
+//Req
+message CreateMessageReq{
+  types.Message mess = 1;  
+}
+message RepeateMessageReq{
+  int32 id = 1;
+}
+message RepeateMessageRes{
+  types.Message mess = 1;
+}
+
