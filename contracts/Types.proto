@@ -15,5 +15,6 @@ message Message{
   string name = 2;
   string message_value = 3;
   string publisher_email = 4;
-  repeated string emails_consumers = 5;
+  string time_dispatch = 5;
+  repeated string emails_consumers = 6;
 }
