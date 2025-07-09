@@ -86,7 +86,7 @@ type Message struct {
 	Id              int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name            string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	MessageValue    string                 `protobuf:"bytes,3,opt,name=message_value,json=messageValue,proto3" json:"message_value,omitempty"`
-	Publisher       *User                  `protobuf:"bytes,4,opt,name=publisher,proto3" json:"publisher,omitempty"`
+	PublisherEmail  string                 `protobuf:"bytes,4,opt,name=publisher_email,json=publisherEmail,proto3" json:"publisher_email,omitempty"`
 	EmailsConsumers []string               `protobuf:"bytes,5,rep,name=emails_consumers,json=emailsConsumers,proto3" json:"emails_consumers,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -143,11 +143,11 @@ func (x *Message) GetMessageValue() string {
 	return ""
 }
 
-func (x *Message) GetPublisher() *User {
+func (x *Message) GetPublisherEmail() string {
 	if x != nil {
-		return x.Publisher
+		return x.PublisherEmail
 	}
-	return nil
+	return ""
 }
 
 func (x *Message) GetEmailsConsumers() []string {
@@ -165,12 +165,12 @@ const file_Types_proto_rawDesc = "" +
 	"\x04User\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"\xa8\x01\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\xa6\x01\n" +
 	"\aMessage\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12#\n" +
-	"\rmessage_value\x18\x03 \x01(\tR\fmessageValue\x12)\n" +
-	"\tpublisher\x18\x04 \x01(\v2\v.types.UserR\tpublisher\x12)\n" +
+	"\rmessage_value\x18\x03 \x01(\tR\fmessageValue\x12'\n" +
+	"\x0fpublisher_email\x18\x04 \x01(\tR\x0epublisherEmail\x12)\n" +
 	"\x10emails_consumers\x18\x05 \x03(\tR\x0femailsConsumersB*Z(github.com/DEEBBLUE/MailProtos/api/Typesb\x06proto3"
 
 var (
@@ -191,12 +191,11 @@ var file_Types_proto_goTypes = []any{
 	(*Message)(nil), // 1: types.Message
 }
 var file_Types_proto_depIdxs = []int32{
-	0, // 0: types.Message.publisher:type_name -> types.User
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_Types_proto_init() }
