@@ -68,8 +68,7 @@ func (x *DefaultRes) GetStatus() string {
 
 type CreateUserReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Pass          string                 `protobuf:"bytes,2,opt,name=pass,proto3" json:"pass,omitempty"`
+	User          *Types.User            `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -104,18 +103,11 @@ func (*CreateUserReq) Descriptor() ([]byte, []int) {
 	return file_Req_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateUserReq) GetEmail() string {
+func (x *CreateUserReq) GetUser() *Types.User {
 	if x != nil {
-		return x.Email
+		return x.User
 	}
-	return ""
-}
-
-func (x *CreateUserReq) GetPass() string {
-	if x != nil {
-		return x.Pass
-	}
-	return ""
+	return nil
 }
 
 type RepeateUserReq struct {
@@ -361,10 +353,9 @@ const file_Req_proto_rawDesc = "" +
 	"\tReq.proto\x12\x03req\x1a\vTypes.proto\"$\n" +
 	"\n" +
 	"DefaultRes\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"9\n" +
-	"\rCreateUserReq\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
-	"\x04pass\x18\x02 \x01(\tR\x04pass\"&\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"0\n" +
+	"\rCreateUserReq\x12\x1f\n" +
+	"\x04user\x18\x01 \x01(\v2\v.types.UserR\x04user\"&\n" +
 	"\x0eRepeateUserReq\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"1\n" +
 	"\x0eRepeateUserRes\x12\x1f\n" +
@@ -402,12 +393,13 @@ var file_Req_proto_goTypes = []any{
 	(*Types.User)(nil),            // 7: types.User
 }
 var file_Req_proto_depIdxs = []int32{
-	7, // 0: req.RepeateUserRes.user:type_name -> types.User
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	7, // 0: req.CreateUserReq.user:type_name -> types.User
+	7, // 1: req.RepeateUserRes.user:type_name -> types.User
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_Req_proto_init() }
