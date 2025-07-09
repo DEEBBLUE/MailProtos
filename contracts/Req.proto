@@ -1,0 +1,36 @@
+syntax="proto3";
+
+package req;
+
+import "Types.proto";
+
+option go_package="github.com/DEEBBLUE/MailProtos/api/Req";
+
+message DefaultRes{
+  string status = 1;
+}
+
+message CreateUserReq{
+  string email = 1; 
+  string pass = 2;
+}
+
+message RepeateUserReq{
+  string email = 1;
+}
+message RepeateUserRes{
+  types.User user = 1;
+}
+
+message DeleteUserReq{
+  string email = 1;
+}
+
+message UpdateUserPasswordReq{
+  string email = 1;
+  string new_password = 2;
+}
+message UpdateUserNameReq{
+  string email = 1;
+  string new_user_name = 2;
+}

@@ -1,0 +1,20 @@
+syntax="proto3";
+
+package database;
+
+import "Req.proto";
+
+option go_package="github.com/DEEBBLUE/MailProtos/api/Database";
+
+service Database{
+  rpc CreateUser(req.CreateUserReq)
+    returns (req.DefaultRes);
+  rpc RepeateUser(req.RepeateUserReq)
+    returns (req.RepeateUserRes);
+  rpc DeleteUser(req.DeleteUserReq)
+    returns (req.DefaultRes);
+  rpc UpdateUserPassword(req.UpdateUserPasswordReq)
+    returns (req.DefaultRes);
+  rpc UpdateUserName(req.UpdateUserNameReq)
+    returns (req.DefaultRes);
+}
