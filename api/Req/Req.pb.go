@@ -393,7 +393,7 @@ func (x *RepeateMessagesReq) GetEmail() string {
 
 type RepeateMessagesRes struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Emails        []*Types.LightMessage  `protobuf:"bytes,1,rep,name=emails,proto3" json:"emails,omitempty"`
+	Mssages       []*Types.LightMessage  `protobuf:"bytes,1,rep,name=mssages,proto3" json:"mssages,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -428,9 +428,9 @@ func (*RepeateMessagesRes) Descriptor() ([]byte, []int) {
 	return file_Req_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *RepeateMessagesRes) GetEmails() []*Types.LightMessage {
+func (x *RepeateMessagesRes) GetMssages() []*Types.LightMessage {
 	if x != nil {
-		return x.Emails
+		return x.Mssages
 	}
 	return nil
 }
@@ -591,9 +591,9 @@ const file_Req_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\"\n" +
 	"\rnew_user_name\x18\x02 \x01(\tR\vnewUserName\"*\n" +
 	"\x12RepeateMessagesReq\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"A\n" +
-	"\x12RepeateMessagesRes\x12+\n" +
-	"\x06emails\x18\x01 \x03(\v2\x13.types.LightMessageR\x06emails\"6\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"C\n" +
+	"\x12RepeateMessagesRes\x12-\n" +
+	"\amssages\x18\x01 \x03(\v2\x13.types.LightMessageR\amssages\"6\n" +
 	"\x10CreateMessageReq\x12\"\n" +
 	"\x04mess\x18\x01 \x01(\v2\x0e.types.MessageR\x04mess\"#\n" +
 	"\x11RepeateMessageReq\x12\x0e\n" +
@@ -634,7 +634,7 @@ var file_Req_proto_goTypes = []any{
 var file_Req_proto_depIdxs = []int32{
 	12, // 0: req.CreateUserReq.user:type_name -> types.User
 	12, // 1: req.RepeateUserRes.user:type_name -> types.User
-	13, // 2: req.RepeateMessagesRes.emails:type_name -> types.LightMessage
+	13, // 2: req.RepeateMessagesRes.mssages:type_name -> types.LightMessage
 	14, // 3: req.CreateMessageReq.mess:type_name -> types.Message
 	14, // 4: req.RepeateMessageRes.mess:type_name -> types.Message
 	5,  // [5:5] is the sub-list for method output_type
