@@ -568,6 +568,59 @@ func (x *RepeateMessageRes) GetMess() *Types.Message {
 	return nil
 }
 
+// Auth
+type TokensRes struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TokensRes) Reset() {
+	*x = TokensRes{}
+	mi := &file_Req_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TokensRes) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TokensRes) ProtoMessage() {}
+
+func (x *TokensRes) ProtoReflect() protoreflect.Message {
+	mi := &file_Req_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TokensRes.ProtoReflect.Descriptor instead.
+func (*TokensRes) Descriptor() ([]byte, []int) {
+	return file_Req_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *TokensRes) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *TokensRes) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
 var File_Req_proto protoreflect.FileDescriptor
 
 const file_Req_proto_rawDesc = "" +
@@ -599,7 +652,10 @@ const file_Req_proto_rawDesc = "" +
 	"\x11RepeateMessageReq\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\"7\n" +
 	"\x11RepeateMessageRes\x12\"\n" +
-	"\x04mess\x18\x01 \x01(\v2\x0e.types.MessageR\x04messB(Z&github.com/DEEBBLUE/MailProtos/api/Reqb\x06proto3"
+	"\x04mess\x18\x01 \x01(\v2\x0e.types.MessageR\x04mess\"S\n" +
+	"\tTokensRes\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshTokenB(Z&github.com/DEEBBLUE/MailProtos/api/Reqb\x06proto3"
 
 var (
 	file_Req_proto_rawDescOnce sync.Once
@@ -613,7 +669,7 @@ func file_Req_proto_rawDescGZIP() []byte {
 	return file_Req_proto_rawDescData
 }
 
-var file_Req_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_Req_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_Req_proto_goTypes = []any{
 	(*DefaultRes)(nil),            // 0: req.DefaultRes
 	(*CreateUserReq)(nil),         // 1: req.CreateUserReq
@@ -627,16 +683,17 @@ var file_Req_proto_goTypes = []any{
 	(*CreateMessageReq)(nil),      // 9: req.CreateMessageReq
 	(*RepeateMessageReq)(nil),     // 10: req.RepeateMessageReq
 	(*RepeateMessageRes)(nil),     // 11: req.RepeateMessageRes
-	(*Types.User)(nil),            // 12: types.User
-	(*Types.LightMessage)(nil),    // 13: types.LightMessage
-	(*Types.Message)(nil),         // 14: types.Message
+	(*TokensRes)(nil),             // 12: req.TokensRes
+	(*Types.User)(nil),            // 13: types.User
+	(*Types.LightMessage)(nil),    // 14: types.LightMessage
+	(*Types.Message)(nil),         // 15: types.Message
 }
 var file_Req_proto_depIdxs = []int32{
-	12, // 0: req.CreateUserReq.user:type_name -> types.User
-	12, // 1: req.RepeateUserRes.user:type_name -> types.User
-	13, // 2: req.RepeateMessagesRes.mssages:type_name -> types.LightMessage
-	14, // 3: req.CreateMessageReq.mess:type_name -> types.Message
-	14, // 4: req.RepeateMessageRes.mess:type_name -> types.Message
+	13, // 0: req.CreateUserReq.user:type_name -> types.User
+	13, // 1: req.RepeateUserRes.user:type_name -> types.User
+	14, // 2: req.RepeateMessagesRes.mssages:type_name -> types.LightMessage
+	15, // 3: req.CreateMessageReq.mess:type_name -> types.Message
+	15, // 4: req.RepeateMessageRes.mess:type_name -> types.Message
 	5,  // [5:5] is the sub-list for method output_type
 	5,  // [5:5] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
@@ -655,7 +712,7 @@ func file_Req_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_Req_proto_rawDesc), len(file_Req_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
