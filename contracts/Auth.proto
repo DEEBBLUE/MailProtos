@@ -11,7 +11,7 @@ service Auth {
   rpc Login(LoginReq)
     returns (req.TokensRes);
   rpc Access(AccessReq)
-    returns (res.DefaultRes);
+    returns (req.DefaultRes);
   rpc Refresh(RefreshReq)
     returns (RefreshRes);
 }
