@@ -2,16 +2,18 @@ CC = protoc
 PREF = ./api/
 CONF = --proto_path=./contracts --go_out=$(PREF)$@ --go_opt=paths=source_relative --go-grpc_out=$(PREF)$@ --go-grpc_opt=paths=source_relative
 
-COM = $(CC) $(CONF)
+COM = $(CC) $(CONF) $@.proto
 
-all: Types Req Database
+all: Types Req Database Auth
 
 Types:
-	$(COM) Types.proto
+	$(COM) 
 
 Req:
-	$(COM) Req.proto
+	$(COM)
 
 Database:
-	$(COM) Database.proto
+	$(COM)
 
+Auth:
+	$(COM)
