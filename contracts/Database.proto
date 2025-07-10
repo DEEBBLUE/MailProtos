@@ -18,6 +18,8 @@ service Database{
     returns (req.DefaultRes);
   rpc UpdateUserName(req.UpdateUserNameReq)
     returns (req.DefaultRes);
+  rpc RepeateMessages(req.RepeateMessagesReq)
+    returns (req.RepeateMessagesRes);
 
   //Messages
   rpc CreateMessage(req.CreateMessageReq)
