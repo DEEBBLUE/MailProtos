@@ -25,6 +25,7 @@ const (
 	Database_DeleteUser_FullMethodName         = "/database.Database/DeleteUser"
 	Database_UpdateUserPassword_FullMethodName = "/database.Database/UpdateUserPassword"
 	Database_UpdateUserName_FullMethodName     = "/database.Database/UpdateUserName"
+	Database_RepeateMessages_FullMethodName    = "/database.Database/RepeateMessages"
 	Database_CreateMessage_FullMethodName      = "/database.Database/CreateMessage"
 	Database_RepeateMessage_FullMethodName     = "/database.Database/RepeateMessage"
 )
@@ -39,6 +40,7 @@ type DatabaseClient interface {
 	DeleteUser(ctx context.Context, in *Req.DeleteUserReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
 	UpdateUserPassword(ctx context.Context, in *Req.UpdateUserPasswordReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
 	UpdateUserName(ctx context.Context, in *Req.UpdateUserNameReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
+	RepeateMessages(ctx context.Context, in *Req.RepeateMessagesReq, opts ...grpc.CallOption) (*Req.RepeateMessagesRes, error)
 	// Messages
 	CreateMessage(ctx context.Context, in *Req.CreateMessageReq, opts ...grpc.CallOption) (*Req.DefaultRes, error)
 	RepeateMessage(ctx context.Context, in *Req.RepeateMessageReq, opts ...grpc.CallOption) (*Req.RepeateMessageRes, error)
@@ -102,6 +104,16 @@ func (c *databaseClient) UpdateUserName(ctx context.Context, in *Req.UpdateUserN
 	return out, nil
 }
 
+func (c *databaseClient) RepeateMessages(ctx context.Context, in *Req.RepeateMessagesReq, opts ...grpc.CallOption) (*Req.RepeateMessagesRes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Req.RepeateMessagesRes)
+	err := c.cc.Invoke(ctx, Database_RepeateMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *databaseClient) CreateMessage(ctx context.Context, in *Req.CreateMessageReq, opts ...grpc.CallOption) (*Req.DefaultRes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Req.DefaultRes)
@@ -132,6 +144,7 @@ type DatabaseServer interface {
 	DeleteUser(context.Context, *Req.DeleteUserReq) (*Req.DefaultRes, error)
 	UpdateUserPassword(context.Context, *Req.UpdateUserPasswordReq) (*Req.DefaultRes, error)
 	UpdateUserName(context.Context, *Req.UpdateUserNameReq) (*Req.DefaultRes, error)
+	RepeateMessages(context.Context, *Req.RepeateMessagesReq) (*Req.RepeateMessagesRes, error)
 	// Messages
 	CreateMessage(context.Context, *Req.CreateMessageReq) (*Req.DefaultRes, error)
 	RepeateMessage(context.Context, *Req.RepeateMessageReq) (*Req.RepeateMessageRes, error)
@@ -159,6 +172,9 @@ func (UnimplementedDatabaseServer) UpdateUserPassword(context.Context, *Req.Upda
 }
 func (UnimplementedDatabaseServer) UpdateUserName(context.Context, *Req.UpdateUserNameReq) (*Req.DefaultRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserName not implemented")
+}
+func (UnimplementedDatabaseServer) RepeateMessages(context.Context, *Req.RepeateMessagesReq) (*Req.RepeateMessagesRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RepeateMessages not implemented")
 }
 func (UnimplementedDatabaseServer) CreateMessage(context.Context, *Req.CreateMessageReq) (*Req.DefaultRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateMessage not implemented")
@@ -277,6 +293,24 @@ func _Database_UpdateUserName_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Database_RepeateMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Req.RepeateMessagesReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DatabaseServer).RepeateMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Database_RepeateMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DatabaseServer).RepeateMessages(ctx, req.(*Req.RepeateMessagesReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Database_CreateMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Req.CreateMessageReq)
 	if err := dec(in); err != nil {
@@ -339,6 +373,10 @@ var Database_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateUserName",
 			Handler:    _Database_UpdateUserName_Handler,
+		},
+		{
+			MethodName: "RepeateMessages",
+			Handler:    _Database_RepeateMessages_Handler,
 		},
 		{
 			MethodName: "CreateMessage",
