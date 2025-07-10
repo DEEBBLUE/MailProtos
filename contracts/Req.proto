@@ -50,3 +50,8 @@ message RepeateMessageRes{
   types.Message mess = 1;
 }
 
+//Auth
+message TokensRes{
+  string access_token = 1;
+  string refresh_token = 2;
+} 
