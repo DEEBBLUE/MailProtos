@@ -36,7 +36,7 @@ message RepeateMessagesReq{
   string email = 1; 
 }
 message RepeateMessagesRes{
-  repeated types.LightMessage emails = 1; 
+  repeated types.LightMessage mssages = 1; 
 }
 
 //Message
