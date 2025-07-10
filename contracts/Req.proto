@@ -31,7 +31,15 @@ message UpdateUserNameReq{
   string email = 1;
   string new_user_name = 2;
 }
-//Req
+
+message RepeateMessagesReq{
+  string email = 1; 
+}
+message RepeateMessagesRes{
+  repeated types.LightMessage emails = 1; 
+}
+
+//Message
 message CreateMessageReq{
   types.Message mess = 1;  
 }
