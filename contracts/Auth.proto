@@ -1,0 +1,27 @@
+syntax="proto3";
+
+package auth;
+
+option go_package="github.com/DEEBBLUE/MailProtos/api/Auth";
+
+service Auth {
+  rpc Register(req.CreateUserReq)
+    returns (req.TokensRes);
+  rpc Login(LoginReq)
+    returns (req.TokensRes);
+  rpc Access(AccessReq)
+    returns (res.DefaultRes);
+  rpc Refresh(RefreshReq)
+    returns (RefreshRes);
+}
+
+message AccessReq{
+  string access_token = 1;
+}
+
+message RefreshReq{
+  string refresh_token = 1;
+}
+message RefreshRes{
+  string access_token = 1;
+}
