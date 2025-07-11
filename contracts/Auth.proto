@@ -18,11 +18,14 @@ service Auth {
 
 message AccessReq{
   string access_token = 1;
+  string email = 2;
 }
 
 message RefreshReq{
   string refresh_token = 1;
+  string email = 2;
 }
+
 message RefreshRes{
   string access_token = 1;
 }
