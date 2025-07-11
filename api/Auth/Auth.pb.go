@@ -25,6 +25,7 @@ const (
 type AccessReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -66,9 +67,17 @@ func (x *AccessReq) GetAccessToken() string {
 	return ""
 }
 
+func (x *AccessReq) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
 type RefreshReq struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -106,6 +115,13 @@ func (*RefreshReq) Descriptor() ([]byte, []int) {
 func (x *RefreshReq) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *RefreshReq) GetEmail() string {
+	if x != nil {
+		return x.Email
 	}
 	return ""
 }
@@ -211,12 +227,14 @@ var File_Auth_proto protoreflect.FileDescriptor
 const file_Auth_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"Auth.proto\x12\x04auth\x1a\tReq.proto\".\n" +
+	"Auth.proto\x12\x04auth\x1a\tReq.proto\"D\n" +
 	"\tAccessReq\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"1\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\"G\n" +
 	"\n" +
 	"RefreshReq\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"/\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\"/\n" +
 	"\n" +
 	"RefreshRes\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"<\n" +
